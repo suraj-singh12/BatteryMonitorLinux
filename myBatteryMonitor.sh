@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Full path to the beep.wav file
+beep_file=/home/suraj/BatteryMonitorLinux/beep.wav
+
 # Infinite loop to check battery percentage
 while true; do
     # Get the battery percentage as an integer
@@ -14,7 +17,7 @@ while true; do
         echo -e "\e[31mShutting down the system in 1 min if not plugged in!\e[0m"
 
         # Beep alert
-        play -q beep.wav repeat 1 > /dev/null 2>&1
+        play -q $beep_file repeat 1 > /dev/null 2>&1
         
         # Wait for 60 seconds for the user to close everything or plug in charging
         seconds_left=60
@@ -24,7 +27,7 @@ while true; do
             
             # Beep when last 10 seconds are remaining
             if [ $seconds_left -le 10 ]; then
-                play -q beep_short.wav > /dev/null 2>&1
+                play -q $beep_file > /dev/null 2>&1
             fi
             
             # Wait for 1 second
@@ -43,10 +46,11 @@ while true; do
         # Battery is fully charged
         echo -e "\e[32mBattery is fully charged!\e[0m"
         # Beep alert
-        play -q beep.wav > /dev/null 2>&1
+        play -q $beep_file > /dev/null 2>&1
     fi
 
     # Wait for 10 seconds before checking again
     sleep 10
+    
 done
 

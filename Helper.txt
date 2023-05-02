@@ -1,4 +1,5 @@
 1) Created Bash Script and the required audio file
+
 2) Created the service then:
 	sudo nano /etc/systemd/system/battery-check.service
 
@@ -25,4 +26,10 @@
 6) Started the service
 	sudo systemctl start battery-check.service
 
+
+Note: If the above method of running as a service does not work, you can use this simple trick:
+
+1) Open a terminal
+2) write ./myBatteryMonitor.sh &
+	This will get it running in the background and you can continue to work leaving the terminal as is.
 
