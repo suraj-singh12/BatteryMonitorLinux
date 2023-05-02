@@ -1,0 +1,28 @@
+1) Created Bash Script and the required audio file
+2) Created the service then:
+	sudo nano /etc/systemd/system/battery-check.service
+
+3) Populated it in this format:
+
+	[Unit]
+	Description=Battery check script
+	After=network.target
+
+	[Service]
+	ExecStart=/path/to/your/battery/check/script.sh
+	Restart=always
+
+	[Install]
+	WantedBy=multi-user.target
+
+
+4) Then reloaded daemon
+	sudo systemctl daemon-reload
+
+5) Enabled the service
+	sudo systemctl enable battery-check.service
+
+6) Started the service
+	sudo systemctl start battery-check.service
+
+
